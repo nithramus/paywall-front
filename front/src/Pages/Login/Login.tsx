@@ -16,7 +16,8 @@ export default function Login() {
       validationSchema={schema}
       onSubmit={console.log}
       initialValues={{
-        email: "Mark",
+        email: "test@test.fr",
+        password: "",
       }}
     >
       {({
@@ -43,6 +44,24 @@ export default function Login() {
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               <Form.Control.Feedback type="invalid">
                 {errors.email}
+              </Form.Control.Feedback>
+              <Button type="submit">Submit form</Button>
+            </Form.Group>
+          </Form.Row>
+          <Form.Row>
+            <Form.Group as={Col} md="4" controlId="validationFormik01">
+              <Form.Label>email</Form.Label>
+              <Form.Control
+                type="text"
+                name="password"
+                value={values.password}
+                onChange={handleChange}
+                // isValid={touched.password && !errors.password}
+                isInvalid={!!errors.password}
+              />
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+              <Form.Control.Feedback type="invalid">
+                {errors.password}
               </Form.Control.Feedback>
               <Button type="submit">Submit form</Button>
             </Form.Group>
