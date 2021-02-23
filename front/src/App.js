@@ -1,11 +1,10 @@
 import React from "react";
 
-import logo from "./logo.svg";
-import { Counter } from "./features/counter/Counter";
 import Header from "Global/Header";
 import Login from "Pages/Login/Login";
 import { Container, createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/core/styles";
+import Signup from "Pages/SignUp/SignUp";
 
 const theme = createMuiTheme({
   palette: {
@@ -17,8 +16,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Header></Header>
+        <Header />
         <Container>
+          <Signup />
           <Login />
         </Container>
       </div>
