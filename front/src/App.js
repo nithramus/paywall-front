@@ -5,6 +5,7 @@ import Login from "Pages/Login/Login";
 import { Container, createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 import Signup from "Pages/SignUp/SignUp";
+import ConnectedRouter from "Router/Connected.Router";
 
 const theme = createMuiTheme({
   palette: {
@@ -18,8 +19,7 @@ function App() {
       <div className="App">
         <Header />
         <Container>
-          <Signup />
-          <Login />
+          <ConnectedRouter />
         </Container>
       </div>
     </ThemeProvider>
