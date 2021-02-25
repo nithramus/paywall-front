@@ -13,7 +13,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import RequestUtils from "Libs/Request.utils";
-import { loginAs } from "actions/users.actions";
+import { login } from "actions/users.actions";
 import { useAppDispatch } from "../../app/hooks";
 let schema = yup.object({
   email: yup.string().email().required(),
@@ -21,18 +21,18 @@ let schema = yup.object({
 });
 
 export default function Login() {
+  const dispatch = useAppDispatch();
+
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
     validationSchema: schema,
-    onSubmit: async (values) => {
-      const user = await RequestUtils.post("/login", values);
-      dispatch(loginAs("user"));
+    onSubmit: (values) => {
+      dispatch(login(values.email, values.password));
     },
   });
-  const dispatch = useAppDispatch();
 
   return (
     <form onSubmit={formik.handleSubmit}>

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppDispatch, RootState } from "app/store";
 import RequestUtils from "Libs/Request.utils";
-
+import history from "./history";
 interface UserState {
   userType: string;
 }
@@ -18,11 +18,13 @@ export const userSlice = createSlice({
   },
 });
 export const { loginAs } = userSlice.actions;
+
 export const login = (email: string, password: string) => async (
   dispatch: AppDispatch
 ) => {
   const user = await RequestUtils.post("/login", { email, password });
   dispatch(loginAs(user));
+  history.push("/dashboard");
 };
 
 export const signup = (email: string, password: string) => async (
@@ -31,4 +33,7 @@ export const signup = (email: string, password: string) => async (
   const user = await RequestUtils.post("/signup", { email, password });
   login(email, password);
 };
+
+export const selectUserType = (state: RootState) => state.user.userType;
+
 export default userSlice.reducer;
