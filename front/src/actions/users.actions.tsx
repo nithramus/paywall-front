@@ -6,7 +6,7 @@ interface UserState {
   userType: string;
 }
 const initialState: UserState = {
-  userType: "visitor",
+  userType: localStorage.getItem("loggedAs") || "visitor",
 };
 export const userSlice = createSlice({
   name: "user",
@@ -23,7 +23,8 @@ export const login = (email: string, password: string) => async (
   dispatch: AppDispatch
 ) => {
   const user = await RequestUtils.post("/login", { email, password });
-  dispatch(loginAs(user));
+  dispatch(loginAs("user"));
+  localStorage.setItem("loggedAs", "user");
   history.push("/dashboard");
 };
 
@@ -31,7 +32,14 @@ export const signup = (email: string, password: string) => async (
   dispatch: AppDispatch
 ) => {
   const user = await RequestUtils.post("/signup", { email, password });
-  login(email, password);
+  dispatch(login(email, password));
+};
+
+export const logout = () => (dispatch: AppDispatch) => {
+  console.log("in");
+  dispatch(loginAs("visitor"));
+  localStorage.setItem("loggedAs", "visitor");
+  history.push("/");
 };
 
 export const selectUserType = (state: RootState) => state.user.userType;

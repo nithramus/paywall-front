@@ -4,6 +4,7 @@ import RequestUtils from "Libs/Request.utils";
 import { useFormik } from "formik";
 import { useAppDispatch } from "app/hooks";
 import { Box, Button, TextField, Typography } from "@material-ui/core";
+import { signup } from "actions/users.actions";
 let schema = yup.object().shape({
   email: yup.string().email().required(),
   password: yup.string().min(8).required(),
@@ -12,6 +13,8 @@ let schema = yup.object().shape({
 });
 
 export default function Signup() {
+  const dispatch = useAppDispatch();
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -20,10 +23,9 @@ export default function Signup() {
     },
     validationSchema: schema,
     onSubmit: async (values) => {
-      const body = await RequestUtils.post("/signup", values);
+      dispatch(signup(values.email, values.password));
     },
   });
-  const dispatch = useAppDispatch();
   return (
     <form onSubmit={formik.handleSubmit}>
       <Box

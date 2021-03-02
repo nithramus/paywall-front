@@ -2,7 +2,13 @@ import React from "react";
 
 import Header from "Global/Header";
 import Login from "Pages/Login/Login";
-import { Container, createMuiTheme } from "@material-ui/core";
+import {
+  makeStyles,
+  useTheme,
+  Theme,
+  createStyles,
+  createMuiTheme,
+} from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/core/styles";
 import Signup from "Pages/SignUp/SignUp";
 import NotConnectedRouter from "Router/NotConnected.Router";
@@ -10,6 +16,7 @@ import { useSelector } from "react-redux";
 import { selectUserType } from "actions/users.actions";
 import ConnectedRouter from "Router/ConnectedRouter";
 import Menu from "./Global/Menu";
+import { Container } from "@material-ui/core";
 
 const theme = createMuiTheme({
   palette: {
@@ -17,7 +24,22 @@ const theme = createMuiTheme({
   },
 });
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    toolbar: theme.mixins.toolbar,
+    root: {
+      display: "flex",
+    },
+    content: {
+      flexGrow: 1,
+      padding: theme.spacing(3),
+    },
+  })
+);
+
 function App() {
+  const classes = useStyles();
+
   const userType = useSelector(selectUserType);
   if (userType === "visitor") {
     return (
@@ -33,11 +55,12 @@ function App() {
   }
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
+      <div className={classes.root}>
         <Menu />
-        <Container>
+        <main className={classes.content}>
+          <div className={classes.toolbar} />
           <ConnectedRouter />
-        </Container>
+        </main>
       </div>
     </ThemeProvider>
   );
