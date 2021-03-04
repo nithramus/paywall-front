@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppDispatch, RootState } from "app/store";
-import { get } from "http";
 import RequestUtils from "Libs/Request.utils";
 import history from "./history";
 
 interface Site {
+  _id: String;
   name: String;
 }
 type Sites = Array<Site>;
@@ -36,7 +36,13 @@ export const loadSites = () => async (dispatch: AppDispatch) => {
 export const addSite = (name: string, websiteUrl: string) => async (
   dispatch: AppDispatch
 ) => {
-  const site = await RequestUtils.post("/site", { name, websiteUrl });
+  const response = await RequestUtils.post("/sites", { name, websiteUrl });
   dispatch(loadSites());
-  history.push(`/site/${site._id}`);
+  history.push(`/site/${response.InsertedID}`);
 };
+
+export const getSite = (state: RootState, siteId: string) =>
+  state.sites.sites.find((site) => site._id === siteId);
+export const getSites = (state: RootState) => state.sites.sites;
+
+export default sitesSlice.reducer;

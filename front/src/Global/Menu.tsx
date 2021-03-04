@@ -82,14 +82,14 @@ export default function ResponsiveDrawer(props: Props) {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        <ListItem button key={"Sites"}>
-          <Link to="/sites">
+        <Link to="/sites">
+          <ListItem button key={"Sites"}>
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
-          </Link>
-          <ListItemText primary={"Sites"} />
-        </ListItem>
+            <ListItemText primary={"Sites"} />
+          </ListItem>
+        </Link>
         <ListItem button key={"Analytics"}>
           <ListItemIcon>
             <InboxIcon />

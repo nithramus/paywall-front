@@ -25,7 +25,7 @@ export const login = (email: string, password: string) => async (
   const user = await RequestUtils.post("/login", { email, password });
   dispatch(loginAs("user"));
   localStorage.setItem("loggedAs", "user");
-  history.push("/dashboard");
+  history.push("/sites");
 };
 
 export const signup = (email: string, password: string) => async (
@@ -36,7 +36,6 @@ export const signup = (email: string, password: string) => async (
 };
 
 export const logout = () => (dispatch: AppDispatch) => {
-  console.log("in");
   dispatch(loginAs("visitor"));
   localStorage.setItem("loggedAs", "visitor");
   history.push("/");

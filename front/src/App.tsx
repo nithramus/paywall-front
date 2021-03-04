@@ -17,6 +17,8 @@ import { selectUserType } from "actions/users.actions";
 import ConnectedRouter from "Router/ConnectedRouter";
 import Menu from "./Global/Menu";
 import { Container } from "@material-ui/core";
+import { loadSites } from "actions/sites.actions";
+import { useAppDispatch } from "app/hooks";
 
 const theme = createMuiTheme({
   palette: {
