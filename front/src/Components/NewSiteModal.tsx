@@ -10,12 +10,12 @@ import NewSiteForm from "./NewSiteForm";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      padding: theme.spacing(4),
       minWidth: 300,
       maxWidth: 600,
       display: "flex",
       justifyContent: "center",
       flexGrow: 1,
-      minHeight: 300,
       backgroundColor: "white",
     },
     modal: {
