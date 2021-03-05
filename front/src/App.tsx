@@ -10,15 +10,12 @@ import {
   createMuiTheme,
 } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/core/styles";
-import Signup from "Pages/SignUp/SignUp";
 import NotConnectedRouter from "Router/NotConnected.Router";
 import { useSelector } from "react-redux";
 import { selectUserType } from "actions/users.actions";
 import ConnectedRouter from "Router/ConnectedRouter";
 import Menu from "./Global/Menu";
 import { Container } from "@material-ui/core";
-import { loadSites } from "actions/sites.actions";
-import { useAppDispatch } from "app/hooks";
 
 const theme = createMuiTheme({
   palette: {

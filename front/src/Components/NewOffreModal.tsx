@@ -5,7 +5,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import { Button, Typography } from "@material-ui/core";
 import InboxIcon from "@material-ui/icons/Inbox";
-import NewSiteForm from "./NewSiteForm";
+import NewOffreForm from "./NewOffreForm";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function NewSiteModal() {
+export default function NewOffreModal() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -52,7 +52,7 @@ export default function NewSiteModal() {
         startIcon={<InboxIcon />}
         onClick={handleOpen}
       >
-        Ajouter un site
+        Ajouter un offre
       </Button>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -68,7 +68,7 @@ export default function NewSiteModal() {
       >
         <Fade in={open}>
           <div className={classes.root}>
-            <NewSiteForm />
+            <NewOffreForm />
           </div>
         </Fade>
       </Modal>

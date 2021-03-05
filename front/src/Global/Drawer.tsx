@@ -56,7 +56,7 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Mes sites", "Analytics", "Mon argent", "Drafts"].map(
+        {["Mes offres", "Analytics", "Mon argent", "Drafts"].map(
           (text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>

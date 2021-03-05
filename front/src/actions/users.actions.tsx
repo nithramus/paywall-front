@@ -25,7 +25,7 @@ export const login = (email: string, password: string) => async (
   const user = await RequestUtils.post("/login", { email, password });
   dispatch(loginAs("user"));
   localStorage.setItem("loggedAs", "user");
-  history.push("/sites");
+  history.push("/offres");
 };
 
 export const signup = (email: string, password: string) => async (
