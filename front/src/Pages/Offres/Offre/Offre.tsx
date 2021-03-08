@@ -16,14 +16,9 @@ interface Props {
 export default function Offre({
   match,
 }: RouteComponentProps<{ offreId: string }>) {
-  const offre = useSelector((state: RootState) =>
-    getOffre(state, match.params.offreId)
-  );
   return (
     <div>
-      <OffreMenu />
-
-      {offre?.name}
+      <OffreMenu offreId={match.params.offreId} />
     </div>
   );
 }

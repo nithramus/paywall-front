@@ -10,10 +10,10 @@ export default function Offres() {
   const offres = useSelector(getOffres);
   const offreListe = offres.map((offre) => {
     return (
-      <Link to={`/offres/${offre._id}`}>
+      <Link to={`/offres/${offre.ID}`}>
         <ListItem button key="Offre1">
           <InboxIcon />
-          <ListItemText primary={offre.name} />
+          <ListItemText primary={offre.Name} />
         </ListItem>
       </Link>
     );

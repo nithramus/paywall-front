@@ -1,25 +1,25 @@
-import React from "react";
-
-import Header from "Global/Header";
-import Login from "Pages/Login/Login";
-import {
-  makeStyles,
-  useTheme,
-  Theme,
-  createStyles,
-  createMuiTheme,
-} from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/core/styles";
-import NotConnectedRouter from "Router/NotConnected.Router";
-import { useSelector } from "react-redux";
-import { selectUserType } from "actions/users.actions";
-import ConnectedRouter from "Router/ConnectedRouter";
-import Menu from "./Global/Menu";
 import { Container } from "@material-ui/core";
+import {
+  createMuiTheme,
+  createStyles,
+  makeStyles,
+  Theme,
+  ThemeProvider,
+} from "@material-ui/core/styles";
+import { selectUserType } from "actions/users.actions";
+import Header from "Global/Header";
+import React from "react";
+import { useSelector } from "react-redux";
+import ConnectedRouter from "Router/ConnectedRouter";
+import NotConnectedRouter from "Router/NotConnected.Router";
+import Menu from "./Global/Menu";
 
 const theme = createMuiTheme({
   palette: {
     type: "light",
+    background: {
+      default: "#fafafa",
+    },
   },
 });
 

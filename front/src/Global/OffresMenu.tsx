@@ -1,10 +1,16 @@
-import React, { Props } from "react";
-import { makeStyles, Theme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import { makeStyles, Theme } from "@material-ui/core/styles";
+import Tab from "@material-ui/core/Tab";
+import Tabs from "@material-ui/core/Tabs";
+import Typography from "@material-ui/core/Typography";
+import { getOffre } from "actions/offres.actions";
+import { RootState } from "app/store";
+import AppBarContainer from "Components/AppBarContainer";
+import Abonnement from "Pages/Offres/Offre/Abonnement";
+import Sites from "Pages/Offres/Offre/Sites";
+import React from "react";
+import { useSelector } from "react-redux";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -42,13 +48,15 @@ function a11yProps(index: any) {
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.default,
   },
 }));
-export default function OffreMenu() {
+export default function OffreMenu(props: { offreId: string }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-
+  const offre = useSelector((state: RootState) =>
+    getOffre(state, props.offreId)
+  );
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
@@ -63,16 +71,18 @@ export default function OffreMenu() {
           variant="fullWidth"
           textColor="primary"
         >
-          <Tab label="Sites" {...a11yProps(0)} />
-          <Tab label="Abonnements" {...a11yProps(1)} />
+          <Tab label="Abonnement" {...a11yProps(0)} />
+          <Tab label="Sites" {...a11yProps(1)} />
           <Tab label="Utilisateurs" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Sites
+        <AppBarContainer>
+          <Abonnement />
+        </AppBarContainer>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Abonnements
+        <Sites />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Utilisateurs

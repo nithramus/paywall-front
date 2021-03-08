@@ -4,8 +4,8 @@ import RequestUtils from "Libs/Request.utils";
 import history from "./history";
 
 interface Offre {
-  _id: String;
-  name: String;
+  ID: String;
+  Name: String;
 }
 type Offres = Array<Offre>;
 interface OffresState {
@@ -42,7 +42,7 @@ export const addOffre = (name: string, weboffreUrl: string) => async (
 };
 
 export const getOffre = (state: RootState, offreId: string) =>
-  state.offres.offres.find((offre) => offre._id === offreId);
+  state.offres.offres.find((offre) => offre.ID === offreId);
 export const getOffres = (state: RootState) => state.offres.offres;
 
 export default offresSlice.reducer;
