@@ -1,9 +1,5 @@
-import { getOffre, loadOffres } from "actions/offres.actions";
-import { useAppDispatch } from "app/hooks";
-import { RootState } from "app/store";
 import OffreMenu from "Global/OffresMenu";
 import React from "react";
-import { useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
 
 interface Props {

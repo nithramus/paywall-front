@@ -1,11 +1,10 @@
-import React from "react";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import Modal from "@material-ui/core/Modal";
+import { Button } from "@material-ui/core";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import { Button, Typography } from "@material-ui/core";
+import Modal from "@material-ui/core/Modal";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import InboxIcon from "@material-ui/icons/Inbox";
-import NewOffreForm from "./NewOffreForm";
+import React, { PropsWithChildren } from "react";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -32,7 +31,9 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function NewOffreModal() {
+export default function NewModal(
+  props: PropsWithChildren<{ buttonText: string }>
+) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -52,7 +53,7 @@ export default function NewOffreModal() {
         startIcon={<InboxIcon />}
         onClick={handleOpen}
       >
-        Ajouter un offre
+        {props.buttonText}
       </Button>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -67,9 +68,7 @@ export default function NewOffreModal() {
         }}
       >
         <Fade in={open}>
-          <div className={classes.root}>
-            <NewOffreForm />
-          </div>
+          <div className={classes.root}>{props.children}</div>
         </Fade>
       </Modal>
     </div>

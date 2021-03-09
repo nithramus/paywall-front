@@ -1,10 +1,11 @@
-import React from "react";
-import { Button, List, ListItem, ListItemText } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { List, ListItem, ListItemText } from "@material-ui/core";
 import InboxIcon from "@material-ui/icons/Inbox";
-import NewOffreModal from "Components/NewOffreModal";
-import { useSelector } from "react-redux";
 import { getOffres } from "actions/offres.actions";
+import NewOffreModal from "Components/NewModal";
+import NewOffreForm from "Components/NewOffreForm";
+import React from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Offres() {
   const offres = useSelector(getOffres);
@@ -20,7 +21,9 @@ export default function Offres() {
   });
   return (
     <div>
-      <NewOffreModal />
+      <NewOffreModal buttonText="Ajouter une offre">
+        <NewOffreForm />
+      </NewOffreModal>
       <List>{offreListe}</List>
     </div>
   );

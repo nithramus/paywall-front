@@ -3,11 +3,6 @@ import { AppDispatch, RootState } from "app/store";
 import RequestUtils from "Libs/Request.utils";
 import history from "./history";
 
-interface Offre {
-  ID: String;
-  Name: String;
-}
-type Offres = Array<Offre>;
 interface OffresState {
   offres: Offres;
 }
