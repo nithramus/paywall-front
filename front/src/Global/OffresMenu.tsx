@@ -4,13 +4,8 @@ import { makeStyles, Theme } from "@material-ui/core/styles";
 import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 import Typography from "@material-ui/core/Typography";
-import { getOffre } from "actions/offres.actions";
-import { RootState } from "app/store";
 import AppBarContainer from "Components/AppBarContainer";
-import Abonnement from "Pages/Offres/Offre/Abonnement";
-import Sites from "Pages/Offres/Offre/Sites";
 import React from "react";
-import { useSelector } from "react-redux";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -51,12 +46,21 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: theme.palette.background.default,
   },
 }));
-export default function OffreMenu(props: { offreId: string }) {
+
+interface Props {
+  componentId: string;
+  componentOne: JSX.Element;
+  componentOneText: string;
+  componentTwo: JSX.Element;
+  componentTwoText: string;
+  componentThree: JSX.Element;
+  componentThreeText: string;
+}
+
+export default function OffreMenu(props: Props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const offre = useSelector((state: RootState) =>
-    getOffre(state, props.offreId)
-  );
+
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
@@ -71,21 +75,19 @@ export default function OffreMenu(props: { offreId: string }) {
           variant="fullWidth"
           textColor="primary"
         >
-          <Tab label="Abonnement" {...a11yProps(0)} />
-          <Tab label="Sites" {...a11yProps(1)} />
-          <Tab label="Utilisateurs" {...a11yProps(2)} />
+          <Tab label={props.componentOneText} {...a11yProps(0)} />
+          <Tab label={props.componentTwoText} {...a11yProps(1)} />
+          <Tab label={props.componentThreeText} {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <AppBarContainer>
-          <Abonnement />
-        </AppBarContainer>
+        <AppBarContainer>{props.componentOne}</AppBarContainer>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Sites />
+        {props.componentTwo}
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Utilisateurs
+        {props.componentThree}
       </TabPanel>
     </div>
   );

@@ -1,6 +1,8 @@
 import OffreMenu from "Global/OffresMenu";
 import React from "react";
 import { RouteComponentProps } from "react-router";
+import OffreSettings from "./Settings";
+import Sites from "./Sites";
 
 interface Props {
   /**
@@ -14,7 +16,15 @@ export default function Offre({
 }: RouteComponentProps<{ offreId: string }>) {
   return (
     <div>
-      <OffreMenu offreId={match.params.offreId} />
+      <OffreMenu
+        componentId={match.params.offreId}
+        componentOne={<OffreSettings />}
+        componentOneText="Settings"
+        componentTwo={<Sites />}
+        componentTwoText="Sites"
+        componentThree={<div>Users</div>}
+        componentThreeText="Utilisateurs"
+      />
     </div>
   );
 }

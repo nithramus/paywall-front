@@ -28,10 +28,8 @@ export const loadOffres = () => async (dispatch: AppDispatch) => {
   dispatch(setOffres(offres));
 };
 
-export const addOffre = (name: string, weboffreUrl: string) => async (
-  dispatch: AppDispatch
-) => {
-  const response = await RequestUtils.post("/offres", { name, weboffreUrl });
+export const addOffre = (name: string) => async (dispatch: AppDispatch) => {
+  const response = await RequestUtils.post("/offres", { name });
   dispatch(loadOffres());
   history.push(`/offres/${response.InsertedID}`);
 };

@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function Abonnement() {
+export default function OffreSettings() {
   const classes = useStyles();
   return (
     <FormGroup>
