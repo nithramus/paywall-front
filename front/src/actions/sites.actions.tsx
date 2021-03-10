@@ -3,13 +3,6 @@ import { AppDispatch, RootState } from "app/store";
 import RequestUtils from "Libs/Request.utils";
 import Site from "Pages/Sites/Site/Site";
 import history from "./history";
-interface Site {
-  ID: Number;
-  Activated: boolean;
-  Name: String;
-  WebsiteUrl: String;
-}
-type Sites = Array<Site>;
 
 interface SitesState {
   sites: Sites;
@@ -43,7 +36,7 @@ export const addSite = (Name: string) => async (dispatch: AppDispatch) => {
   history.push(`/sites/${response.ID}`);
 };
 
-export const updateSite = (params: Site, siteId: string) => async (
+export const updateSite = (params: Site, siteId: Number) => async (
   dispatch: AppDispatch
 ) => {
   const response = await RequestUtils.put(`/sites/${siteId}`, params);

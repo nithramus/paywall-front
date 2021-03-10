@@ -1,6 +1,8 @@
 interface Site {
-  ID: String;
+  ID: Number;
+  Activated: boolean;
   Name: String;
+  Offres: Offres;
   WebsiteUrl: String;
 }
 type Sites = Array<Site>;

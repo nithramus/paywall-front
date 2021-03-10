@@ -28,10 +28,16 @@ export const loadOffres = () => async (dispatch: AppDispatch) => {
   dispatch(setOffres(offres));
 };
 
-export const addOffre = (name: string) => async (dispatch: AppDispatch) => {
+export const addOffre = (name: string, siteID: Number | null) => async (
+  dispatch: AppDispatch
+) => {
   const response = await RequestUtils.post("/offres", { name });
+  if (siteID) {
+    await RequestUtils.post(`/sites/${siteID}/offre/${response.ID}`);
+  } else {
+    history.push(`/offres/${response.InsertedID}`);
+  }
   dispatch(loadOffres());
-  history.push(`/offres/${response.InsertedID}`);
 };
 
 export const getOffre = (state: RootState, offreId: string) =>

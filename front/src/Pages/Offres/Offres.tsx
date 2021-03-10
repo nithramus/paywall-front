@@ -22,7 +22,7 @@ export default function Offres() {
   return (
     <div>
       <NewOffreModal buttonText="Ajouter une offre">
-        <NewOffreForm />
+        <NewOffreForm siteID={null} />
       </NewOffreModal>
       <List>{offreListe}</List>
     </div>

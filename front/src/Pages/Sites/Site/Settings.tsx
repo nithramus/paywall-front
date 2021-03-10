@@ -35,21 +35,18 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function OffreSettings(props: { siteId: string }) {
-  const site = useSelector((state: RootState) => getSite(state, props.siteId));
-  console.log(site);
+export default function OffreSettings(props: { site: Site }) {
   const dispatch = useAppDispatch();
   const classes = useStyles();
   const formik = useFormik({
-    initialValues: { ...site },
+    initialValues: { ...props.site },
     validationSchema: schema,
     enableReinitialize: true,
     onSubmit: (values) => {
       console.log({ values });
-      dispatch(updateSite(values, props.siteId));
+      dispatch(updateSite(values, props.site.ID));
     },
   });
-  console.log(formik.values.Activated);
   return (
     <form onSubmit={formik.handleSubmit}>
       <List component="nav" aria-label="mailbox folders">

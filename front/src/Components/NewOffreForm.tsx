@@ -9,15 +9,15 @@ let schema = yup.object({
   Name: yup.string().required(),
 });
 
-export default function NewOffreForm() {
+export default function NewOffreForm(props: { siteID: Number | null }) {
   const dispatch = useAppDispatch();
   const formik = useFormik({
     initialValues: {
-      name: "",
+      Name: "",
     },
     validationSchema: schema,
     onSubmit: (values) => {
-      dispatch(addOffre(values.name));
+      dispatch(addOffre(values.Name, props.siteID));
     },
   });
   return (
@@ -27,14 +27,14 @@ export default function NewOffreForm() {
       </Box>
       <TextField
         fullWidth
-        id="name"
-        name="name"
-        label="name"
+        id="Name"
+        name="Name"
+        label="Name"
         margin="normal"
-        value={formik.values.name}
+        value={formik.values.Name}
         onChange={formik.handleChange}
-        error={formik.touched.name && Boolean(formik.errors.name)}
-        helperText={formik.touched.name && formik.errors.name}
+        error={formik.touched.Name && Boolean(formik.errors.Name)}
+        helperText={formik.touched.Name && formik.errors.Name}
       />
       IS THIS FOR TEST ?
       <Button variant="contained" color="primary" fullWidth type="submit">
