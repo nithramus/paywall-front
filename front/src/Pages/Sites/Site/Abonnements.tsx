@@ -12,7 +12,7 @@ export default function SiteAbonnements(props: { site: Site }) {
       <NewModal buttonText="Créer un nouvel abonnement pour ce site">
         <NewOffreForm siteID={props.site.ID} />
       </NewModal>
-      <NewModal buttonText="Ajouter un abonnement existant">
+      <NewModal buttonText="Ajouter à un abonnement existant">
         <SelectOffre siteID={props.site.ID} />
       </NewModal>
       {offres}

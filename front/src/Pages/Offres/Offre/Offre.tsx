@@ -1,4 +1,5 @@
 import OffreMenu from "Global/OffresMenu";
+import SiteProtection from "Pages/Sites/Site/Protection/SiteProtection";
 import React from "react";
 import { RouteComponentProps } from "react-router";
 import OffreSettings from "./Settings";
@@ -24,6 +25,8 @@ export default function Offre({
         componentTwoText="Sites"
         componentThree={<div>Users</div>}
         componentThreeText="Utilisateurs"
+        componentFour={<SiteProtection />}
+        componentFourText={"Protections"}
       />
     </div>
   );

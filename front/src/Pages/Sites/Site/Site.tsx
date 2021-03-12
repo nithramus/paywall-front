@@ -6,6 +6,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import SiteAbonnements from "./Abonnements";
+import SiteProtection from "./Protection/SiteProtection";
 import SiteSettings from "./Settings";
 import SiteUsers from "./Users";
 
@@ -26,8 +27,10 @@ export default function Site({
       componentOneText="Settings"
       componentTwo={<SiteAbonnements site={site} />}
       componentTwoText="Abonnements"
-      componentThree={<SiteUsers />}
-      componentThreeText="Users"
+      componentThree={<SiteProtection />}
+      componentThreeText="Règles d'accès"
+      componentFour={<SiteUsers />}
+      componentFourText="Users"
     />
   );
 }

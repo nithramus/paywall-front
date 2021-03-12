@@ -55,6 +55,8 @@ interface Props {
   componentTwoText: string;
   componentThree: JSX.Element;
   componentThreeText: string;
+  componentFour: JSX.Element;
+  componentFourText: string;
 }
 
 export default function OffreMenu(props: Props) {
@@ -78,6 +80,7 @@ export default function OffreMenu(props: Props) {
           <Tab label={props.componentOneText} {...a11yProps(0)} />
           <Tab label={props.componentTwoText} {...a11yProps(1)} />
           <Tab label={props.componentThreeText} {...a11yProps(2)} />
+          <Tab label={props.componentFourText} {...a11yProps(3)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -88,6 +91,9 @@ export default function OffreMenu(props: Props) {
       </TabPanel>
       <TabPanel value={value} index={2}>
         {props.componentThree}
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        {props.componentFour}
       </TabPanel>
     </div>
   );
