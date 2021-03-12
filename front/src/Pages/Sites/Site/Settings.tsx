@@ -35,16 +35,18 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function OffreSettings(props: { site: Site }) {
+export default function OffreSettings() {
   const dispatch = useAppDispatch();
   const classes = useStyles();
+  const site = useSelector(getSite);
+
   const formik = useFormik({
-    initialValues: { ...props.site },
+    initialValues: { ...site },
     validationSchema: schema,
     enableReinitialize: true,
     onSubmit: (values) => {
       console.log({ values });
-      dispatch(updateSite(values, props.site.ID));
+      dispatch(updateSite(values, site.ID));
     },
   });
   return (

@@ -5,8 +5,6 @@ import { Route, Switch } from "react-router";
 import Site from "./Site/Site";
 import Sites from "./Sites";
 export default function SitesRouter(props: any) {
-  const dispatch = useAppDispatch();
-  dispatch(loadSites());
   return (
     <>
       <Switch>

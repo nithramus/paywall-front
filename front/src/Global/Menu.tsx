@@ -24,6 +24,8 @@ import { Box, Button, Menu, MenuItem } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { logout } from "actions/users.actions";
 import { useAppDispatch } from "app/hooks";
+import { loadOffres } from "actions/offres.actions";
+import { loadSites } from "actions/sites.actions";
 
 const drawerWidth = 240;
 
@@ -133,6 +135,8 @@ export default function ResponsiveDrawer(props: Props) {
     setAnchorEl(event.currentTarget);
   };
   const dispatch = useAppDispatch();
+  dispatch(loadOffres());
+  dispatch(loadSites());
 
   const handleClose = () => {
     dispatch(logout());

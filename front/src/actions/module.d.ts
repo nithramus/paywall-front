@@ -1,5 +1,5 @@
 interface Site {
-  ID: Number;
+  ID: number;
   Activated: boolean;
   Name: String;
   Offres: Offres;
@@ -8,8 +8,8 @@ interface Site {
 type Sites = Array<Site>;
 
 interface Offre {
-  ID: String;
+  ID: number;
   Name: String;
-  sites: Site;
+  Sites: sites;
 }
 type Offres = Array<Offre>;

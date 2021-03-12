@@ -17,7 +17,7 @@ export default function Offre({
   return (
     <div>
       <OffreMenu
-        componentId={match.params.offreId}
+        componentId={parseInt(match.params.offreId)}
         componentOne={<OffreSettings />}
         componentOneText="Settings"
         componentTwo={<Sites />}

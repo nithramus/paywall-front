@@ -28,7 +28,7 @@ export const loadOffres = () => async (dispatch: AppDispatch) => {
   dispatch(setOffres(offres));
 };
 
-export const addOffre = (name: string, siteID: Number | null) => async (
+export const addOffre = (name: string, siteID: number | null) => async (
   dispatch: AppDispatch
 ) => {
   const response = await RequestUtils.post("/offres", { name });
@@ -40,7 +40,7 @@ export const addOffre = (name: string, siteID: Number | null) => async (
   dispatch(loadOffres());
 };
 
-export const getOffre = (state: RootState, offreId: string) =>
+export const getOffre = (state: RootState, offreId: number) =>
   state.offres.offres.find((offre) => offre.ID === offreId);
 export const getOffres = (state: RootState) => state.offres.offres;
 

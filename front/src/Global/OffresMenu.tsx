@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface Props {
-  componentId: string;
+  componentId: number;
   componentOne: JSX.Element;
   componentOneText: string;
   componentTwo: JSX.Element;

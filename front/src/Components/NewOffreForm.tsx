@@ -9,7 +9,7 @@ let schema = yup.object({
   Name: yup.string().required(),
 });
 
-export default function NewOffreForm(props: { siteID: Number | null }) {
+export default function NewOffreForm(props: { siteID: number | null }) {
   const dispatch = useAppDispatch();
   const formik = useFormik({
     initialValues: {

@@ -6,10 +6,12 @@ import history from "./history";
 
 interface SitesState {
   sites: Sites;
+  selectedSite: Site;
 }
 
 const initialState: SitesState = {
   sites: [],
+  selectedSite: {} as Site,
 };
 
 export const sitesSlice = createSlice({
@@ -19,10 +21,13 @@ export const sitesSlice = createSlice({
     setSites: (state: SitesState, action: PayloadAction<Sites>) => {
       state.sites = action.payload;
     },
+    selectSite: (state: SitesState, action: PayloadAction<Site>) => {
+      state.selectedSite = action.payload;
+    },
   },
 });
 
-export const { setSites } = sitesSlice.actions;
+export const { setSites, selectSite } = sitesSlice.actions;
 
 export const loadSites = () => async (dispatch: AppDispatch) => {
   const sites = await RequestUtils.get("/sites");
@@ -36,20 +41,30 @@ export const addSite = (Name: string) => async (dispatch: AppDispatch) => {
   history.push(`/sites/${response.ID}`);
 };
 
-export const updateSite = (params: Site, siteId: Number) => async (
+export const updateSite = (params: Site, siteId: number) => async (
   dispatch: AppDispatch
 ) => {
   const response = await RequestUtils.put(`/sites/${siteId}`, params);
   dispatch(loadSites());
 };
 
-export const getSite = (state: RootState, siteId: string) => {
-  let site: Site;
-  return (
-    state.sites.sites.find((site) => site.ID === parseInt(siteId, 10)) ||
-    ({} as Site)
-  );
+export const loadSite = (siteID: number) => async (dispatch: AppDispatch) => {
+  const site = await RequestUtils.get(`/sites/${siteID}`);
+  dispatch(selectSite(site));
 };
+
+export const addOffreToSite = async (siteID: number, offreID: number) => {
+  await RequestUtils.post(`/sites/${siteID}/offre/${offreID}`);
+};
+
+export const removeOffreFromSite = async (siteID: number, offreID: number) => {
+  await RequestUtils.delete(`/sites/${siteID}/offre/${offreID}`);
+};
+
+export const getSite = (state: RootState) => {
+  return state.sites.selectedSite;
+};
+
 export const getSites = (state: RootState) => state.sites.sites;
 
 export default sitesSlice.reducer;

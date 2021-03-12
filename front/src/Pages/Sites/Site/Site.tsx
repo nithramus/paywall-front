@@ -1,7 +1,8 @@
-import { getSite } from "actions/sites.actions";
+import { getSite, loadSite, selectSite } from "actions/sites.actions";
+import { useAppDispatch } from "app/hooks";
 import { RootState } from "app/store";
 import OffreMenu from "Global/OffresMenu";
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import SiteAbonnements from "./Abonnements";
@@ -11,13 +12,17 @@ import SiteUsers from "./Users";
 export default function Site({
   match,
 }: RouteComponentProps<{ siteId: string }>) {
-  let siteId = match.params.siteId;
-  const site = useSelector((state: RootState) => getSite(state, siteId));
+  const dispatch = useAppDispatch();
+  const site = useSelector(getSite);
+  let siteID = parseInt(match.params.siteId);
+  useEffect(() => {
+    dispatch(loadSite(siteID));
+  }, []);
 
   return (
     <OffreMenu
-      componentId={siteId}
-      componentOne={<SiteSettings site={site} />}
+      componentId={siteID}
+      componentOne={<SiteSettings />}
       componentOneText="Settings"
       componentTwo={<SiteAbonnements site={site} />}
       componentTwoText="Abonnements"
