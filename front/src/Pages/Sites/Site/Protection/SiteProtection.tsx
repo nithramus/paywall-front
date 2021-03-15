@@ -18,7 +18,7 @@ export default function SiteProtection(props: { siteID: number }) {
         component={NewAccessRuleForm}
         siteID={props.siteID}
         buttonText="Ajotuerrègle"
-      ></NewModal>
+      />
       {rulesList}
     </div>
   );

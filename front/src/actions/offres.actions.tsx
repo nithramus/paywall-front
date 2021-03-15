@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppDispatch, RootState } from "app/store";
 import RequestUtils from "Libs/Request.utils";
 import history from "./history";
+import { loadSite } from "./sites.actions";
 
 interface OffresState {
   offres: Offres;
@@ -34,6 +35,7 @@ export const addOffre = (name: string, siteID: number | null) => async (
   const response = await RequestUtils.post("/offres", { name });
   if (siteID) {
     await RequestUtils.post(`/sites/${siteID}/offre/${response.ID}`);
+    dispatch(loadSite(siteID));
   } else {
     history.push(`/offres/${response.InsertedID}`);
   }

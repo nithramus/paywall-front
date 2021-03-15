@@ -9,7 +9,10 @@ let schema = yup.object({
   Name: yup.string().required(),
 });
 
-export default function NewOffreForm(props: { siteID: number | null }) {
+export default function NewOffreForm(props: {
+  siteID: number | null;
+  handleClose: Function;
+}) {
   const dispatch = useAppDispatch();
   const formik = useFormik({
     initialValues: {
@@ -18,6 +21,7 @@ export default function NewOffreForm(props: { siteID: number | null }) {
     validationSchema: schema,
     onSubmit: (values) => {
       dispatch(addOffre(values.Name, props.siteID));
+      props.handleClose();
     },
   });
   return (

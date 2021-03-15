@@ -22,9 +22,12 @@ export default function Sites() {
   });
   return (
     <div>
-      {/* <NewModal buttonText="Ajouter un site">
-        <NewSiteForm />
-      </NewModal> */}
+      <NewModal
+        component={NewSiteForm}
+        siteID={0}
+        buttonText="Ajouter un site"
+      />
+
       <List>{siteList}</List>
     </div>
   );
