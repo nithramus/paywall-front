@@ -92,7 +92,7 @@ export default function OffreMenu(props: Props) {
       <TabPanel value={value} index={2}>
         {props.componentThree}
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      <TabPanel value={value} index={3}>
         {props.componentFour}
       </TabPanel>
     </div>

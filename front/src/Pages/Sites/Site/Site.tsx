@@ -1,6 +1,6 @@
+import { loadRules } from "actions/rules.actions";
 import { getSite, loadSite, selectSite } from "actions/sites.actions";
 import { useAppDispatch } from "app/hooks";
-import { RootState } from "app/store";
 import OffreMenu from "Global/OffresMenu";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
@@ -18,6 +18,7 @@ export default function Site({
   let siteID = parseInt(match.params.siteId);
   useEffect(() => {
     dispatch(loadSite(siteID));
+    dispatch(loadRules(siteID));
   }, []);
 
   return (
@@ -27,7 +28,7 @@ export default function Site({
       componentOneText="Settings"
       componentTwo={<SiteAbonnements site={site} />}
       componentTwoText="Abonnements"
-      componentThree={<SiteProtection />}
+      componentThree={<SiteProtection siteID={siteID} />}
       componentThreeText="Règles d'accès"
       componentFour={<SiteUsers />}
       componentFourText="Users"

@@ -25,7 +25,7 @@ export default function Offre({
         componentTwoText="Sites"
         componentThree={<div>Users</div>}
         componentThreeText="Utilisateurs"
-        componentFour={<SiteProtection />}
+        componentFour={<SiteProtection siteID={1} />}
         componentFourText={"Protections"}
       />
     </div>

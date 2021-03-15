@@ -13,3 +13,9 @@ interface Offre {
   Sites: sites;
 }
 type Offres = Array<Offre>;
+
+interface Rule {
+  ID: number;
+  Name: string;
+}
+type Rules = Array<Rule>;
