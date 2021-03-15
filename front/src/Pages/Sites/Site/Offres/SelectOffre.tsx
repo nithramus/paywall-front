@@ -10,8 +10,9 @@ export default function SelectOffre(props: { siteID: number }) {
 
   const offreList = offres.map((offre) => {
     if (
-      offre.Sites &&
-      offre.Sites.find((site: Site) => site.ID === props.siteID)
+      offre.IsDefault ||
+      (offre.Sites &&
+        offre.Sites.find((site: Site) => site.ID === props.siteID))
     ) {
       return null;
     }

@@ -11,6 +11,7 @@ interface Offre {
   ID: number;
   Name: String;
   Sites: sites;
+  IsDefault: boolean;
 }
 type Offres = Array<Offre>;
 
