@@ -11,11 +11,14 @@ export default function SiteProtection(props: { siteID: number }) {
   let rulesList = rules.map((rule) => {
     return <div>{rule.Name}</div>;
   });
+
   return (
     <div>
-      <NewModal buttonText="Créer une nouvelle règle d'accès">
-        <NewAccessRuleForm siteID={props.siteID} />
-      </NewModal>
+      <NewModal
+        component={NewAccessRuleForm}
+        siteID={props.siteID}
+        buttonText="Ajotuerrègle"
+      ></NewModal>
       {rulesList}
     </div>
   );

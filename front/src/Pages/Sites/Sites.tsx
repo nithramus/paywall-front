@@ -1,11 +1,12 @@
 import { List, ListItem, ListItemText } from "@material-ui/core";
 import InboxIcon from "@material-ui/icons/Inbox";
-import { getSites } from "actions/sites.actions";
+import { getSites, setSites } from "actions/sites.actions";
 import NewModal from "Components/NewModal";
 import NewSiteForm from "Components/NewSiteForm";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import store from "app/store";
 
 export default function Sites() {
   const sites = useSelector(getSites);
@@ -21,9 +22,9 @@ export default function Sites() {
   });
   return (
     <div>
-      <NewModal buttonText="Ajouter un site">
+      {/* <NewModal buttonText="Ajouter un site">
         <NewSiteForm />
-      </NewModal>
+      </NewModal> */}
       <List>{siteList}</List>
     </div>
   );

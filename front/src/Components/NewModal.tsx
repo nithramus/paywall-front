@@ -4,7 +4,7 @@ import Fade from "@material-ui/core/Fade";
 import Modal from "@material-ui/core/Modal";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import InboxIcon from "@material-ui/icons/Inbox";
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, FunctionComponent } from "react";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -32,7 +32,11 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function NewModal(
-  props: PropsWithChildren<{ buttonText: string }>
+  props: PropsWithChildren<{
+    siteID: number;
+    buttonText: string;
+    component: FunctionComponent<{ siteID: number; handleClose: Function }>;
+  }>
 ) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -68,7 +72,14 @@ export default function NewModal(
         }}
       >
         <Fade in={open}>
-          <div className={classes.root}>{props.children}</div>
+          <div className={classes.root}>
+            {
+              <props.component
+                siteID={props.siteID}
+                handleClose={handleClose}
+              />
+            }
+          </div>
         </Fade>
       </Modal>
     </div>

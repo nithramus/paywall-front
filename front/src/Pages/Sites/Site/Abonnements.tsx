@@ -9,12 +9,12 @@ export default function SiteAbonnements(props: { site: Site }) {
   });
   return (
     <div>
-      <NewModal buttonText="Créer un nouvel abonnement pour ce site">
+      {/* <NewModal buttonText="Créer un nouvel abonnement pour ce site">
         <NewOffreForm siteID={props.site.ID} />
       </NewModal>
       <NewModal buttonText="Ajouter à un abonnement existant">
         <SelectOffre siteID={props.site.ID} />
-      </NewModal>
+      </NewModal> */}
       {offres}
     </div>
   );

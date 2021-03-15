@@ -1,15 +1,20 @@
+import React, { FunctionComponent } from "react"; // importing FunctionComponent
+
 import { Box, Button, TextField, Typography } from "@material-ui/core";
 import { addRule } from "actions/rules.actions";
 import { useAppDispatch } from "app/hooks";
 import { useFormik } from "formik";
-import React from "react";
 import * as yup from "yup";
+import { PinDropSharp } from "@material-ui/icons";
 
 let schema = yup.object({
   Name: yup.string().required(),
 });
 
-export default function NewAccessRuleForm(props: { siteID: number }) {
+export default function NewAccessRuleForm(props: {
+  siteID: number;
+  handleClose: Function;
+}) {
   const dispatch = useAppDispatch();
   const formik = useFormik({
     initialValues: {
@@ -18,6 +23,7 @@ export default function NewAccessRuleForm(props: { siteID: number }) {
     validationSchema: schema,
     onSubmit: (values) => {
       dispatch(addRule(values as Rule, props.siteID));
+      props.handleClose();
     },
   });
   return (

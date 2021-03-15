@@ -1,9 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppDispatch, RootState } from "app/store";
 import RequestUtils from "Libs/Request.utils";
-import Site from "Pages/Sites/Site/Site";
 import history from "./history";
-
 interface SitesState {
   sites: Sites;
   selectedSite: Site;
@@ -19,6 +17,7 @@ export const sitesSlice = createSlice({
   initialState,
   reducers: {
     setSites: (state: SitesState, action: PayloadAction<Sites>) => {
+      console.log("onon");
       state.sites = action.payload;
     },
     selectSite: (state: SitesState, action: PayloadAction<Site>) => {

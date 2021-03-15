@@ -38,7 +38,6 @@ export const addRule = (rule: Rule, siteID: number) => async (
 ) => {
   const response = await RequestUtils.post(`/rules/site/${siteID}`, rule);
   dispatch(loadRules(siteID));
-  history.push(`/rules/${response.ID}`);
 };
 
 export const updateRule = (

@@ -21,9 +21,9 @@ export default function Offres() {
   });
   return (
     <div>
-      <NewOffreModal buttonText="Ajouter une offre">
+      {/* <NewOffreModal buttonText="Ajouter une offre">
         <NewOffreForm siteID={null} />
-      </NewOffreModal>
+      </NewOffreModal> */}
       <List>{offreListe}</List>
     </div>
   );
